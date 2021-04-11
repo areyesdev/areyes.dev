@@ -1,3 +1,4 @@
+import Link from "next/link"
 import fs from "fs";
 import matter from 'gray-matter';
 
@@ -6,14 +7,18 @@ import Layout from '../components/Layout'
 export default function Home({posts}) {
   return (
     <Layout>
-      {posts.map(({frontmatter: {title, description, date}}) => (
-        <article>
+      {posts.map(({frontmatter: {title, description, date}, slug}) => (
+        <article key={slug}>
           <header>
-            <h3>{title}</h3>
-            <span>{date}</span>
+            <h3 className="mb-2">
+              <Link href={"[slug]"} as={`${slug}`}>
+                <a className="text-3xl font-semibold text-blue-400 no-underline">{title}</a>
+              </Link>
+            </h3>
+            <span className="mb-4 text-sm">{date}</span>
           </header>
           <section>
-            <p>{description}</p>
+            <p className="mb-8">{description}</p>
           </section>
         </article>
       ))}
@@ -37,7 +42,7 @@ export async function getStaticProps() {
       date: formattedDate,
     }
     return {
-      slug: filename.replace(".md", ""),
+      slug: filename.replace(".mdx", ""),
       frontmatter,
     };
   });

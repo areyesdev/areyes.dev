@@ -3,11 +3,11 @@ import {useRouter} from 'next/router'
 
 export default function Layout({children}){
   return (
-    <div>
+    <div className="max-w-screen-sm px-4 py-8 mx-auto ">
       <header>
-        <h1>
+        <h1 className="mb-8">
           <Link href="/">
-            <a>Mi web</a>
+            <a className="text-5xl font-black text-black no-underline">Mi web</a>
           </Link>
         </h1>
       </header>
