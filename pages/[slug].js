@@ -4,8 +4,8 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import matter from 'gray-matter'
 import hydrate from 'next-mdx-remote/hydrate'
 
-import Layout from '../components/Layout'
-import Button from '../components/Button'
+// import Layout from '../components/Layout'
+// import Button from '../components/Button'
 
 const components = {Button};
 
